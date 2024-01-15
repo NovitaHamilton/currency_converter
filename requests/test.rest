@@ -13,4 +13,9 @@ GET http://localhost:3001/api/currencies/1
 
 POST http://localhost:3001/api/currencies/
 
+###
+
+
+PUT http://localhost:3001/api/currencies/3/11581
+
 

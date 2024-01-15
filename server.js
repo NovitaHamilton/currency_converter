@@ -40,7 +40,7 @@ let currencies = [
  * @responds with the string 'Hello World!'
  */
 app.get('/', (request, response) => {
-  response.send('Hello World!');
+  response.status(201).send('Hello World!');
 });
 
 /**
@@ -49,7 +49,7 @@ app.get('/', (request, response) => {
  * @responds with returning the data as a JSON
  */
 app.get('/api/currencies/', (request, response) => {
-  response.json(currencies);
+  response.status(201).json(currencies);
 });
 
 /**
@@ -60,7 +60,7 @@ app.get('/api/currencies/', (request, response) => {
 app.get('/api/currencies/:id', (request, response) => {
   const id = Number(request.params.id);
   const currency = currencies.find((currency) => currency.id === id);
-  response.json(currency);
+  response.status(201).json(currency);
 });
 
 /**
@@ -70,13 +70,16 @@ app.get('/api/currencies/:id', (request, response) => {
  * @responds by returning the newly created resource
  */
 app.post('/api/currencies/', (request, response) => {
+  const newId = currencies.length + 1;
   const newCurrency = {
-    id: 1,
+    id: newId,
     currencyCode: 'IDR',
     country: 'Indonesia',
     conversionRate: 11581.4,
   };
-  response.json(newCurrency);
+
+  currencies.push(newCurrency);
+  response.status(201).json(newCurrency);
 });
 
 /**
@@ -86,7 +89,15 @@ app.post('/api/currencies/', (request, response) => {
  * Hint: updates the currency with the new conversion rate
  * @responds by returning the newly updated resource
  */
-app.put('...', (request, response) => {});
+app.put('/api/currencies/:id/:newRate', (request, response) => {
+  const newRate = Number(request.params.newRate);
+  const id = Number(request.params.id);
+  const selectedCurrency = currencies.find((currency) => currency.id === id);
+
+  selectedCurrency.conversionRate = newRate;
+
+  response.status(201).json(selectedCurrency);
+});
 
 /**
  * TODO: DELETE:id Endpoint
