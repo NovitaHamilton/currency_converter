@@ -1,1 +1,9 @@
-GET http://localhost:3001/api/currency/
+GET http://localhost:3001/
+
+###
+
+GET http://localhost:3001/api/currencies/
+
+###
+
+GET http://localhost:3001/api/currencies/1
