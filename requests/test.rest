@@ -7,3 +7,10 @@ GET http://localhost:3001/api/currencies/
 ###
 
 GET http://localhost:3001/api/currencies/1
+
+
+###
+
+POST http://localhost:3001/api/currencies/
+
+

@@ -65,11 +65,19 @@ app.get('/api/currencies/:id', (request, response) => {
 
 /**
  * TODO: POST Endpoint
- * @receives a post request to the URL: http://localhost:3001/api/currency,
+ * @receives a post request to the URL: http://localhost:3001/api/currencies,
  * with data object enclosed
  * @responds by returning the newly created resource
  */
-app.post('...', (request, response) => {});
+app.post('/api/currencies/', (request, response) => {
+  const newCurrency = {
+    id: 1,
+    currencyCode: 'IDR',
+    country: 'Indonesia',
+    conversionRate: 11581.4,
+  };
+  response.json(newCurrency);
+});
 
 /**
  * TODO: PUT:id endpoint
