@@ -16,6 +16,14 @@ GET http://localhost:3001/api/currencies/2
 
 // To test adding currency (with hard coded information)
 POST http://localhost:3001/api/currencies/
+Content-Type: application/json
+
+{
+    "content": {
+    "currencyCode": "IDR",
+    "country": "Indonesia",
+    "conversionRate": 11581.4}
+}
 
 ###
 

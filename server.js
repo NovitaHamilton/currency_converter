@@ -1,6 +1,7 @@
 const express = require('express'); // We import the express application
 const cors = require('cors'); // Necessary for localhost
 const app = express(); // Creates an express application in app
+const morgan = require('morgan'); //HTTP request logger middleware for node.js
 
 /**
  * Initial application setup
@@ -33,6 +34,15 @@ let currencies = [
     conversionRate: 0.75,
   },
 ];
+
+// To generate a new ID for new currency entry
+const generateId = () => {
+  return currencies.length + 1;
+};
+
+app.use(
+  morgan(':method :url :status :res[content-length] - :response-time ms')
+);
 
 /**
  * TESTING Endpoint (Completed)
@@ -76,24 +86,23 @@ app.get('/api/currencies/:id', (request, response) => {
  * @responds by returning the newly created resource
  */
 app.post('/api/currencies/', (request, response) => {
-  const newId = currencies.length + 1;
-  const newCurrency = {
-    id: newId,
-    currencyCode: 'IDR',
-    country: 'Indonesia',
-    conversionRate: 11581.4,
-  };
+  const content = request.body.content;
 
   if (
-    !newCurrency.currencyCode ||
-    !newCurrency.country ||
-    newCurrency.conversionRate == null
+    !content.currencyCode ||
+    !content.country ||
+    content.conversionRate == null
   ) {
     return response.status(400).json({ error: 'Missing required input' });
   }
 
+  const newCurrency = {
+    id: generateId(),
+    ...content,
+  };
+
   currencies = currencies.concat(newCurrency);
-  response.status(201).json(currencies);
+  response.status(201).json(newCurrency);
 });
 
 /**
