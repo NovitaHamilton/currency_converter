@@ -16,6 +16,11 @@ POST http://localhost:3001/api/currencies/
 ###
 
 
-PUT http://localhost:3001/api/currencies/3/11581
+PUT http://localhost:3001/api/currencies/2/11584
+
+
+###
+
+DELETE http://localhost:3001/api/currencies/1
 
 

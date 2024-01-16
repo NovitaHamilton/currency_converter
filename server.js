@@ -78,8 +78,8 @@ app.post('/api/currencies/', (request, response) => {
     conversionRate: 11581.4,
   };
 
-  currencies.push(newCurrency);
-  response.status(201).json(newCurrency);
+  currencies = currencies.concat(newCurrency);
+  response.status(201).json(currencies);
 });
 
 /**
@@ -101,10 +101,14 @@ app.put('/api/currencies/:id/:newRate', (request, response) => {
 
 /**
  * TODO: DELETE:id Endpoint
- * @receives a delete request to the URL: http://localhost:3001/api/currency/:id,
+ * @receives a delete request to the URL: http://localhost:3001/api/currencies/:id,
  * @responds by returning a status code of 204
  */
-app.post('...', (request, response) => {});
+app.delete('/api/currencies/:id', (request, response) => {
+  const id = Number(request.params.id);
+  currencies = currencies.filter((currency) => currency.id !== id);
+  response.status(201).json(currencies);
+});
 
 const PORT = 3001;
 app.listen(PORT, () => {
