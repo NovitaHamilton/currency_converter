@@ -1,26 +1,35 @@
+// To test getting root endpoint
 GET http://localhost:3001/
 
 ###
 
+// To test getting currencies
 GET http://localhost:3001/api/currencies/
 
 ###
 
-GET http://localhost:3001/api/currencies/1
+// To test getting particular currency by id
+GET http://localhost:3001/api/currencies/2
 
 
 ###
 
+// To test adding currency (with hard coded information)
 POST http://localhost:3001/api/currencies/
 
 ###
 
-
-PUT http://localhost:3001/api/currencies/2/11584
+// To test modifying property conversionRate in a currency by id
+PUT http://localhost:3001/api/currencies/2/0.74
 
 
 ###
 
+// To test delete currency by id
 DELETE http://localhost:3001/api/currencies/1
 
+###
+
+// To test unknown endpoint
+GET http://localhost:3001/api/currenci
 

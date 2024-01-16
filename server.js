@@ -60,6 +60,12 @@ app.get('/api/currencies/', (request, response) => {
 app.get('/api/currencies/:id', (request, response) => {
   const id = Number(request.params.id);
   const currency = currencies.find((currency) => currency.id === id);
+
+  // Check if currency was found
+  if (!currency) {
+    return response.status(404).json({ error: 'Currency not found' });
+  }
+
   response.status(201).json(currency);
 });
 
@@ -77,6 +83,14 @@ app.post('/api/currencies/', (request, response) => {
     country: 'Indonesia',
     conversionRate: 11581.4,
   };
+
+  if (
+    !newCurrency.currencyCode ||
+    !newCurrency.country ||
+    newCurrency.conversionRate == null
+  ) {
+    return response.status(400).json({ error: 'Missing required input' });
+  }
 
   currencies = currencies.concat(newCurrency);
   response.status(201).json(currencies);
@@ -108,6 +122,11 @@ app.delete('/api/currencies/:id', (request, response) => {
   const id = Number(request.params.id);
   currencies = currencies.filter((currency) => currency.id !== id);
   response.status(201).json(currencies);
+});
+
+// Handle undefined routes
+app.use((request, response) => {
+  response.status(404).json({ error: 'Unknown endpoint' });
 });
 
 const PORT = 3001;
