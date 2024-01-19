@@ -1,36 +1,27 @@
 const { sequelize } = require('../config/sequelize');
 const { DataTypes, Model } = require('sequelize');
 
-// Define Currency Model
-class Currency extends Model {}
-Currency.init(
+// Define Country Model
+class Country extends Model {}
+Country.init(
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    currencyCode: {
-      type: DataTypes.INTEGER,
-      primaryKEY: false,
-      allowNull: false,
-    },
-    countryId: {
+    name: {
       type: DataTypes.INTEGER,
       primaryKey: false,
       allowNull: false,
-      references: {
-        model: 'Country',
-        key: 'id',
-      },
     },
   },
   {
     sequelize,
     underscored: false, //  This determines the naming convention for automatically-added fields (like foreign keys and timestamps) to 'camelCase' instead of 'snake_case'
     timestamps: true, // This automatically adds createdAt and updatedAt fields
-    modelName: 'Currency',
+    modelName: 'Country',
   }
 );
 
-model.exports = Currency;
+model.exports = Country;
