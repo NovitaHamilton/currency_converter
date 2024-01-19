@@ -1,9 +1,10 @@
+require('dotenv').config();
+
 const { Sequelize } = require('sequelize');
 const pg = require('pg');
 
 // External Database URL (from Render)
-const databaseURL =
-  'postgres://novitacristiarti:M0GD6e4Cvea0xcHLH9Y7wv6nDCtyHjgw@dpg-cmk4asf109ks73fuiou0-a.oregon-postgres.render.com/novitacristiarti';
+const databaseURL = process.env.DB_URL;
 
 // Sequalize intialization to connect to database, second argument is additional configuration object
 const sequelize = new Sequelize(databaseURL, {
