@@ -1,4 +1,6 @@
 const currenciesRouter = require('express').Router();
+const { request, response } = require('express');
+const Currency = require('../models/currency'); // to import the Currency model
 
 /**
  * DATA STORAGE
@@ -10,33 +12,26 @@ const currenciesRouter = require('express').Router();
  * conversionRate: the amount, in that currency, required to equal 1 Canadian dollar
  */
 
-let currencies = [
-  {
-    id: 1,
-    currencyCode: 'CDN',
-    country: 'Canada',
-    conversionRate: 1,
-  },
-  {
-    id: 2,
-    currencyCode: 'USD',
-    country: 'United States of America',
-    conversionRate: 0.75,
-  },
-];
-
-// To generate a new ID for new currency entry
-const generateId = () => {
-  return currencies.length + 1;
-};
-
 /**
  * TODO: GET Endpoint
  * @receives a get request to the URL: http://localhost:3001/api/currency/
  * @responds with returning the data as a JSON
  */
-currenciesRouter.get('/', (request, response) => {
-  response.status(201).json(currencies);
+
+// Without Sequelize and model
+// currenciesRouter.get('/', (request, response) => {
+//   response.status(201).json(currencies);
+// });
+
+// With Sequelize and model
+currenciesRouter.get('/', async (request, response) => {
+  try {
+    const currencies = await Currency.findAll();
+    response.status(200).json(currencies);
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 /**
@@ -44,6 +39,8 @@ currenciesRouter.get('/', (request, response) => {
  * @receives a get request to the URL: http://localhost:3001/api/currencies/:id
  * @responds with returning specific data as a JSON
  */
+
+// Without Sequelize and model
 currenciesRouter.get('/:id', (request, response) => {
   const id = Number(request.params.id);
   const currency = currencies.find((currency) => currency.id === id);

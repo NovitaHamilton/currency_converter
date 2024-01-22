@@ -3,6 +3,7 @@ const { DataTypes, Model } = require('sequelize');
 
 // Define Currency Model
 class Currency extends Model {}
+
 Currency.init(
   {
     id: {
@@ -11,18 +12,21 @@ Currency.init(
       autoIncrement: true,
     },
     currencyCode: {
-      type: DataTypes.INTEGER,
-      primaryKEY: false,
+      type: DataTypes.STRING,
+      primaryKey: false,
       allowNull: false,
     },
     countryId: {
       type: DataTypes.INTEGER,
-      primaryKey: false,
-      allowNull: false,
       references: {
-        model: 'Country',
+        model: Country,
         key: 'id',
       },
+    },
+    conversionRate: {
+      type: DataTypes.FLOAT,
+      primaryKey: false,
+      allowNull: false,
     },
   },
   {
@@ -33,4 +37,4 @@ Currency.init(
   }
 );
 
-model.exports = Currency;
+module.exports = Currency;

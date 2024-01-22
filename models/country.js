@@ -11,7 +11,7 @@ Country.init(
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       primaryKey: false,
       allowNull: false,
     },
@@ -19,9 +19,9 @@ Country.init(
   {
     sequelize,
     underscored: false, //  This determines the naming convention for automatically-added fields (like foreign keys and timestamps) to 'camelCase' instead of 'snake_case'
-    timestamps: true, // This automatically adds createdAt and updatedAt fields
+    timestamps: false, // This automatically adds createdAt and updatedAt fields
     modelName: 'Country',
   }
 );
 
-model.exports = Country;
+module.exports = Country;

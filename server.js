@@ -1,9 +1,11 @@
 const express = require('express'); // We import the express application
-const currenciesRouter = require('./routes/currencies');
+const currenciesRouter = require('./routers/currencies'); // to import router
 const middleware = require('./utils/middleware');
 const cors = require('cors'); // Necessary for localhost
+const { authenticateConnection } = require('./config/sequelize'); // To import database connection
 const app = express(); // Creates an express application in app
 
+//
 /**
  * Initial application setup
  * We need to use cors so we can connect to a localhost later
@@ -11,6 +13,8 @@ const app = express(); // Creates an express application in app
  */
 app.use(cors());
 app.use(express.json());
+
+authenticateConnection(); //authenticate connection to database
 
 app.use(middleware.logger); // to log request
 
