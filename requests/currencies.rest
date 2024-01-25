@@ -14,7 +14,7 @@ GET http://localhost:3001/api/currencies/2
 ###
 
 // To test error handling for getting particular currency by id if it's not available in the data
-GET http://localhost:3001/api/currencies/6
+GET http://localhost:3001/api/currencies/10
 
 
 ###
@@ -25,9 +25,9 @@ Content-Type: application/json
 
 {
     "content": {
-    "currencyCode": "IDR",
-    "country": "Indonesia",
-    "conversionRate": 11581.4}
+    "currencyCode": "CAD",
+    "countryId": 7,
+    "conversionRate": 0.75}
 }
 
 ###

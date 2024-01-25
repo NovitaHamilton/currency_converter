@@ -1,5 +1,6 @@
 const express = require('express'); // We import the express application
 const currenciesRouter = require('./routers/currencies'); // to import router
+const countriesRouter = require('./routers/countries'); // to import countries router
 const middleware = require('./utils/middleware');
 const cors = require('cors'); // Necessary for localhost
 const { authenticateConnection } = require('./config/sequelize'); // To import database connection
@@ -28,6 +29,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/api/currencies/', currenciesRouter); // Add currencies route
+app.use('/api/countries/', countriesRouter); // Add countries route
 app.use(middleware.unknownEndpoint); // to handle unknown endpoint
 
 const PORT = 3001;

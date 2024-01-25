@@ -9,7 +9,10 @@ Country.sync().then(() => {
         name: 'Canada',
       },
       {
-        name: 'United States',
+        name: 'United States of America',
+      },
+      {
+        name: 'Indonesia',
       },
     ]).then(() => console.log('Country created successfully'));
   } catch (error) {
