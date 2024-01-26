@@ -38,4 +38,9 @@ Currency.init(
   }
 );
 
+// Define one-to-one association with Country
+Currency.belongsTo(Country, {
+  foreignKey: 'countryId',
+});
+
 module.exports = Currency;

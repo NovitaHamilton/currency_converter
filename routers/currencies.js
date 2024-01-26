@@ -12,7 +12,7 @@ const Currency = require('../models/currency'); // to import the Currency model
  * conversionRate: the amount, in that currency, required to equal 1 Canadian dollar
  */
 
-//-----------------GET Endpoint--------------------------//
+//-----------------GET Endpoint------------------------//
 /**
  * @receives a get request to the URL: http://localhost:3001/api/currency/
  * @responds with returning the data as a JSON

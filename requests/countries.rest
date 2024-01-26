@@ -18,13 +18,13 @@ GET http://localhost:3001/api/countries/10
 
 ###
 
-// To test adding currency (with hard coded information)
+// To test adding country (with hard coded information)
 POST http://localhost:3001/api/countries/
 Content-Type: application/json
 
 {
     "content": {
-    "name": "Canada"}
+    "name": "Mexico"}
 }
 
 ###
@@ -35,14 +35,13 @@ Content-Type: application/json
 
 {
     "content": {
-    "currencyCode": "",
-    "country": "United Kingdom",
-    "conversionRate": 0.59}
+    "name": ""
+    }
 }
 
 ###
 
 // To test delete currency by id
-DELETE http://localhost:3001/api/countries/1
+DELETE http://localhost:3001/api/countries/10
 
 

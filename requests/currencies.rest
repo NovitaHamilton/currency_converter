@@ -9,7 +9,7 @@ GET http://localhost:3001/api/currencies/
 ###
 
 // To test getting particular currency by id
-GET http://localhost:3001/api/currencies/2
+GET http://localhost:3001/api/currencies/8
 
 ###
 
@@ -25,9 +25,9 @@ Content-Type: application/json
 
 {
     "content": {
-    "currencyCode": "CAD",
-    "countryId": 7,
-    "conversionRate": 0.75}
+    "currencyCode": "GBP",
+    "countryId": 6,
+    "conversionRate": 0.58}
 }
 
 ###
@@ -46,13 +46,13 @@ Content-Type: application/json
 ###
 
 // To test modifying property conversionRate in a currency by id
-PUT http://localhost:3001/api/currencies/2/0.74
+PUT http://localhost:3001/api/currencies/2/0.75
 
 
 ###
 
 // To test delete currency by id
-DELETE http://localhost:3001/api/currencies/1
+DELETE http://localhost:3001/api/currencies/12
 
 ###
 
