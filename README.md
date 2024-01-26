@@ -4,7 +4,7 @@ This is an assignment project for Coding in Colour - Full Stack Dev program.
 
 We will be building a full-stack currency converter app. This assignment will be the first small step in that direction. We will be setting up a basic node-express server to serve as a starting point for what will be the backend of this full-stack app.
 - [x] **Assignment 1** - Setting up an **node-express server** with endpoints to receive requests and send responses 
-- [ ] **Assignment 2** - Creating an SQL database using **PostgreSQL** on **Render** to create a database that holds our data and **pgAdmin** to view the content of our database, which connects to the node-express server.  **<--- WE ARE HERE**
+- [x] **Assignment 2** - Creating an SQL database using **PostgreSQL** on **Render** to create a database that holds our data and **pgAdmin** to view the content of our database, which connects to the node-express server.  **<--- WE ARE HERE**
 - [ ] Assignment 3 -Creating a front-end React UI that allows users to use the app (without REST/POSTMAN client)
 - [ ] Assignment 4 - Adding unit and integration testing to the full-stack currency converter app
 - [ ] Assignment 5 - Adding front-end and back-end testing to the full-stack currency converter app
