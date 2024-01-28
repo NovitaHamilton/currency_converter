@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'); // We import the express application
 const currenciesRouter = require('./routers/currencies'); // to import router
 const countriesRouter = require('./routers/countries'); // to import countries router
@@ -34,7 +35,7 @@ app.use('/api/countries/', countriesRouter); // Add countries route
 app.use('/api/currency-countryName/', currencyCountryNameRouter); // Add countries route
 app.use(middleware.unknownEndpoint); // to handle unknown endpoint
 
-const PORT = 3001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
 });
