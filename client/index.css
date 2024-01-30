@@ -1,0 +1,89 @@
+html {
+  font-size: 62.5%;
+}
+
+button {
+  font-size: 2rem;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  padding: 0;
+  margin: 0;
+}
+
+.App h1 {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.first-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*-----Login----*/
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Login h2 {
+  font-size: 4rem;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/*------Conversion------*/
+
+.currency-with-flag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: rgb(205, 205, 200);
+  padding: 1rem;
+}
+
+.currency-from input,
+.currency-to input {
+  max-width: 20rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.currency-code {
+  font-size: 2.5rem;
+}
+
+.Conversion {
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+}
+
+/*---Form Input----*/
+.FormInput label {
+  padding-right: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.FormInput input {
+  font-size: 1.75rem;
+  padding: 0.5rem;
+}
