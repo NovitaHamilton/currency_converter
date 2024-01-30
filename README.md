@@ -72,18 +72,18 @@ Please create a new Git branch and call it "assignment 3" and do this assignment
 
  - [x]  For this project we will be using Vite instead of the regular create react app. They serve very similar purposes except Vite is more. If ever you have questions you can as us or check out the ViteLinks to an external site. documentation as well.
  - [x]  Download the starter file Download starter file provided. Create your components under the component folder add necessary files and folders to join the previous assignment to this one. Hint: It will be very helpful to have the following directory structure: mini-project, and inside of it, two directories, client, and server. The former is where we put all the code for the front-end, and the latter is all the code for the server. Please reach out to us if this setup is confusing. Its very important to get this correct for future iterations of the assignment. 
- - [ ]  This is a very simple react application. Front end doesn't have to be very fancy. You only need need the basic requirements stated below.
+ - [ ]  This is a very simple react application. Front end doesn't have to be very fancy. You only need the basic requirements stated below.
  - [ ]  These are the app requirements:
         
-	 - [ ] Login section requires two fields username and password, this part  
+	 - [x] Login section requires two fields username and password, this part  
     will also require two buttons Login and Sign up.
 
-	 - [ ] Conversion section will require 3 fields and a button. Fields include Currency code, Amount, Converted amount, and a button for converting. Do NOT implement the functionality involved in performing    the currency conversion. We will be doing this in the next       assignment. 
+	 - [x] Conversion section will require 3 fields and a button. Fields include Currency code, Amount, Converted amount, and a button for converting. Do NOT implement the functionality involved in performing    the currency conversion. We will be doing this in the next       assignment. 
      - [ ] Add currency section should include multiple fields corresponding to the necessary fields to create a new currency object    and also a button for submitting. Implement the functionality, such      that a person using the front-end GUI can POST a currency to the back-end endpoint, and in result, a currency is added to the database. 
      - [ ] Update currency section requires 2 fields one for currency code and the other for amount for the new conversion rate, and lastly a button for submitting. Implement the functionality, such that a person using the front-end GUI can perform a PUT update for the back-end endpoint, and in result, a currency is updated in the database. 
       - [ ] Delete section requires one field for currency code and a button for deleting. Implement the functionality, such that a person using the front-end GUI can perform a DELETE update for the back-end endpoint, and in result, a currency is removed from the database.   
 - [ ] Design of the components is up to you. An image has been added to show what is required.  For the Login and Sign up part its just designing the features, do not implement any functionality. After adding the visual aspect to it, you have to make sure that the currency conversion page is functional.
-- [ ]  For the Login and Sign up part its just designing the features, **do not implement**  any functionality.
+- [x]  For the Login and Sign up part its just designing the features, **do not implement**  any functionality.
 - [ ] After adding the visual aspect to it, you have to make sure that the currency conversion page is functional.
 
 </details>
