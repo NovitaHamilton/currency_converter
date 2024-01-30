@@ -11,6 +11,11 @@ We will be building a full-stack currency converter app. This assignment will be
 - [ ] Assignment 5 - Adding front-end and back-end testing to the full-stack currency converter app
 - [ ] Assignment 6 - Deploying the app with a live-link, with a CI/CD pipeline
 
+### Libraries used:
+
+- react-currency-flags https://www.npmjs.com/package/react-currency-flags
+
+
 ## Instructions per Assignment
 
 <details>
