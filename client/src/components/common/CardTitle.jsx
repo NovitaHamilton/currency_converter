@@ -1,7 +1,7 @@
 import React from 'react';
 
 function CardTitle({ title }) {
-  return <h3>{title}</h3>;
+  return <div className="CardTitle">{title}</div>;
 }
 
 export default CardTitle;

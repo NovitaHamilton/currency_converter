@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 
 function Form({ onSubmit, buttonText, children }) {
+  const [formInput, setFormInput] = useState({});
+
+  const handleInputChange = (e) => {
+    e.preventDefault(e);
+    const { name, value } = e.target;
+    setFormInput((prevValue) => ({ ...prevValue, [name]: value }));
+  };
+  console.log(formInput);
+
   return (
-    <form onSubmit="">
-      <h2>Form</h2>
+    <form onSubmit={onSubmit}>
       {React.Children.map(
         children,
         (
           child // iterate over its the components passed (children)
         ) =>
           React.cloneElement(child, {
-            onChange: hadleInputChange,
-            value: formState[child.props.name] || '',
+            onChange: handleInputChange,
+            value: formInput[child.props.name] || '',
           })
       )}
 

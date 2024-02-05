@@ -3,7 +3,7 @@ import CardTitle from './CardTitle';
 
 function Card({ title, children }) {
   return (
-    <div>
+    <div className="Card">
       <CardTitle title={title} />
       {children}
     </div>

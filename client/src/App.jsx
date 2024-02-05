@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import Login from './components/Login';
 import Conversion from './components/Conversion';
 import '../index.css';
+import AddCurrency from './components/AddCurrency';
+import UpdateCurrency from './components/UpdateCurrency';
+import DeleteCurrency from './components/DeleteCurrency';
 
 const App = () => {
   console.log('test');
@@ -11,6 +14,12 @@ const App = () => {
       <div className="first-section">
         <Conversion />
         <Login />
+      </div>
+
+      <div className="second-section">
+        <AddCurrency />
+        <UpdateCurrency />
+        <DeleteCurrency />
       </div>
     </div>
   );
