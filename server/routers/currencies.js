@@ -109,7 +109,7 @@ currenciesRouter.get('/:id', async (request, response) => {
 currenciesRouter.post('/', async (request, response) => {
   try {
     // Get data from request body
-    const content = request.body.content;
+    const content = request.body;
     // Validate data
     if (
       !content.currencyCode ||

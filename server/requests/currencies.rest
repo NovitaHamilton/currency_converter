@@ -24,10 +24,9 @@ POST http://localhost:3001/api/currencies/
 Content-Type: application/json
 
 {
-    "content": {
     "currencyCode": "GBP",
     "countryId": 6,
-    "conversionRate": 0.58}
+    "conversionRate": 0.58
 }
 
 ###
@@ -37,10 +36,9 @@ POST http://localhost:3001/api/currencies/
 Content-Type: application/json
 
 {
-    "content": {
     "currencyCode": "",
     "country": "United Kingdom",
-    "conversionRate": 0.59}
+    "conversionRate": 0.59
 }
 
 ###
@@ -52,7 +50,7 @@ PUT http://localhost:3001/api/currencies/2/0.75
 ###
 
 // To test delete currency by id
-DELETE http://localhost:3001/api/currencies/12
+DELETE http://localhost:3001/api/currencies/16
 
 ###
 

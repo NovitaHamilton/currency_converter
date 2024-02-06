@@ -23,8 +23,7 @@ POST http://localhost:3001/api/countries/
 Content-Type: application/json
 
 {
-    "content": {
-    "name": "Mexico"}
+    "name": "Mexico"
 }
 
 ###
@@ -34,9 +33,7 @@ POST http://localhost:3001/api/countries/
 Content-Type: application/json
 
 {
-    "content": {
     "name": ""
-    }
 }
 
 ###

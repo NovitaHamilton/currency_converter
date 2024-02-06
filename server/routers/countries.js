@@ -56,9 +56,10 @@ countriesRouter.get('/:id', async (request, response) => {
  */
 
 countriesRouter.post('/', async (request, response) => {
+  console.log('Request Body:', request.body);
   try {
     // Get data from the request body
-    const content = request.body.content;
+    const content = request.body;
     // Validate the data
     if (!content.name) {
       return response.status(400).json({ error: 'Missing required input' });

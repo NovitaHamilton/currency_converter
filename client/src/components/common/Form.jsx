@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 
-function Form({ onSubmit, buttonText, children }) {
+function Form({ buttonText, children, onFormSubmit }) {
   const [formInput, setFormInput] = useState({});
 
   const handleInputChange = (e) => {
@@ -11,8 +11,12 @@ function Form({ onSubmit, buttonText, children }) {
   };
   console.log(formInput);
 
+  const resetForm = () => {
+    setFormInput({});
+  };
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={(e) => onFormSubmit(e, formInput, resetForm)}>
       {React.Children.map(
         children,
         (
