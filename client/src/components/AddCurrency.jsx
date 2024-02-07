@@ -10,20 +10,20 @@ function AddCurrency() {
     e.preventDefault();
 
     try {
-      // Add country to DB
-      const countryResponse = await countryService.addCountry({
-        name: formInput.countryName,
-      });
+      // // Add country to DB
+      // const countryResponse = await countryService.addCountry({
+      //   name: formInput.countryName,
+      // });
 
-      // Get the newly created country ID
-      const countryId = countryResponse.newCountry.id;
+      // // Get the newly created country ID
+      // const countryId = countryResponse.newCountry.id;
 
-      // Add currency with the countryId to DB
-      const currencyResponse = await currencyService.addCurrency({
-        countryId,
+      const response = await currencyService.addCurrency({
+        countryId: formInput.countryId,
         currencyCode: formInput.currencyCode,
         conversionRate: formInput.conversionRate,
       });
+      console.alert(response);
 
       // Reset form
       resetForm();
@@ -37,7 +37,7 @@ function AddCurrency() {
     <div className="AddCurrency">
       <Card title="Add Currency">
         <Form buttonText="Add" onFormSubmit={handleAddCurrency}>
-          <FormInput label="Country Name" type="text" name="countryName" />
+          <FormInput label="Country ID" type="text" name="countryId" />
 
           <FormInput label="Currency Code" type="text" name="currencyCode" />
 

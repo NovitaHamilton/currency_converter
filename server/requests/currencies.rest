@@ -50,7 +50,7 @@ PUT http://localhost:3001/api/currencies/2/0.75
 ###
 
 // To test delete currency by id
-DELETE http://localhost:3001/api/currencies/16
+DELETE http://localhost:3001/api/currencies/13
 
 ###
 
