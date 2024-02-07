@@ -8,7 +8,6 @@ import countryService from '../services/countryService';
 function AddCurrency() {
   const handleAddCurrency = async (e, formInput, resetForm) => {
     e.preventDefault();
-    console.log(formInput);
 
     try {
       // Add country to DB
@@ -29,7 +28,8 @@ function AddCurrency() {
       // Reset form
       resetForm();
     } catch (error) {
-      console.error();
+      console.error('Error adding currency:', error);
+      throw error;
     }
   };
 

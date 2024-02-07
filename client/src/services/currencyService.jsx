@@ -13,7 +13,7 @@ const getCurrencies = async () => {
 
 const addCurrency = async (content) => {
   try {
-    const response = await axios.post(`${baseUrl}/currencies`, { content });
+    const response = await axios.post(`${baseUrl}/currencies`, content);
     return response.data;
   } catch (error) {
     console.error('Error posting currency:', error);
@@ -23,7 +23,7 @@ const addCurrency = async (content) => {
 
 const updateCurrency = async (id, newRate) => {
   try {
-    const response = await axios.put(`${baseUrl}/${id}/${newRate}`);
+    const response = await axios.put(`${baseUrl}/currencies/${id}/${newRate}`);
     return response.data;
   } catch (error) {
     console.error('Error updating currency:', error);
