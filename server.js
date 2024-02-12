@@ -10,8 +10,7 @@ const app = express(); // Creates an express application in app
  * We need express.json so we can receive requests with JSON data attached
  */
 app.use(cors());
-app.use(express.json());
-
+app.use(express.json()); // to parse JSON bodies
 app.use(middleware.logger); // to log request
 
 /**
