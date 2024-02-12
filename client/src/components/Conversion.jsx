@@ -1,7 +1,7 @@
 import React from 'react';
 import CurrencyWithFlag from './common/CurrencyWithFlag';
-import Button from './common/Button';
-import Form from './common/Form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 
 function Conversion() {
   const handleFormSubmit = (e) => {
@@ -10,21 +10,21 @@ function Conversion() {
 
   return (
     <div className="Conversion">
-      <Form onSubmit={handleFormSubmit} buttonText="Convert">
+      <form onSubmit={handleFormSubmit}>
         <div className="currency-from">
           <CurrencyWithFlag currencyCode="CAD"></CurrencyWithFlag>
           <input type="number" value="1" name="currencyFrom"></input>
         </div>
 
-        {/* <div className="convert-button">
-          <Button>Convert</Button>
-        </div> */}
+        <div className="arrow-icon">
+          <FontAwesomeIcon icon={faExchangeAlt} />
+        </div>
 
         <div className="currency-to">
           <CurrencyWithFlag currencyCode="IDR"></CurrencyWithFlag>
           <input type="number" value="11777.28"></input>
         </div>
-      </Form>
+      </form>
     </div>
   );
 }

@@ -14,11 +14,11 @@ function UpdateCurrency() {
     console.log('Update Currency:', formInput);
 
     try {
-      // Get the currencies
+      // Get all currencies
       const currenciesResponse = await currencyService.getCurrencies();
       console.log(currenciesResponse);
 
-      // Find the currency ro update based on currencyCode
+      // Find the currency to update based on currencyCode
       const currencyToUpdate = await currenciesResponse.find(
         (currency) => currency.currencyCode === formInput.currencyCode
       );
@@ -35,6 +35,7 @@ function UpdateCurrency() {
         currencyToUpdateId,
         newRate
       );
+      console.log('Updated Currency:', updateResponse);
 
       // Reset form
       resetForm();
@@ -48,28 +49,10 @@ function UpdateCurrency() {
     <div className="UpdateCurrency">
       <Card title="Update Currency">
         <Form buttonText="Update" onFormSubmit={handleUpdateCurrency}>
-          <FormInput
-            label="Currency Code"
-            type="text"
-            // value={updateCurrencyForm.currencyCode}
-            // onChange={(value) =>
-            //   setUpdateCurrencyForm((preValue) => ({
-            //     ...preValue,
-            //     currencyCode: value,
-            //   }))
-            // }
-            name="currencyCode"
-          />
+          <FormInput label="Currency Code" type="text" name="currencyCode" />
           <FormInput
             label="New Conversion Rate"
             type="text"
-            // value={updateCurrencyForm.newConversionRate}
-            // onChange={(value) =>
-            //   setUpdateCurrencyForm((preValue) => ({
-            //     ...preValue,
-            //     conversionRate: value,
-            //   }))
-            // }
             name="newConversionRate"
           />
         </Form>

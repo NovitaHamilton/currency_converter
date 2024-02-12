@@ -10,20 +10,12 @@ function AddCurrency() {
     e.preventDefault();
 
     try {
-      // // Add country to DB
-      // const countryResponse = await countryService.addCountry({
-      //   name: formInput.countryName,
-      // });
-
-      // // Get the newly created country ID
-      // const countryId = countryResponse.newCountry.id;
-
       const response = await currencyService.addCurrency({
         countryId: formInput.countryId,
         currencyCode: formInput.currencyCode,
         conversionRate: formInput.conversionRate,
       });
-      console.alert(response);
+      console.log('New Currency Added:', response);
 
       // Reset form
       resetForm();

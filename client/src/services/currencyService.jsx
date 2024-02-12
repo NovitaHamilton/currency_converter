@@ -1,9 +1,9 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:3001/api';
+const baseUrl = 'http://localhost:3001/api/currencies';
 
 const getCurrencies = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/currencies`);
+    const response = await axios.get(`${baseUrl}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching currencies:', error);
@@ -13,7 +13,7 @@ const getCurrencies = async () => {
 
 const addCurrency = async (content) => {
   try {
-    const response = await axios.post(`${baseUrl}/currencies`, content);
+    const response = await axios.post(`${baseUrl}`, content);
     return response.data;
   } catch (error) {
     console.error('Error posting currency:', error);
@@ -23,7 +23,7 @@ const addCurrency = async (content) => {
 
 const updateCurrency = async (id, newRate) => {
   try {
-    const response = await axios.put(`${baseUrl}/currencies/${id}/${newRate}`);
+    const response = await axios.put(`${baseUrl}/${id}/${newRate}`);
     return response.data;
   } catch (error) {
     console.error('Error updating currency:', error);

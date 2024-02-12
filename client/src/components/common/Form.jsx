@@ -9,7 +9,6 @@ function Form({ buttonText, children, onFormSubmit }) {
     const { name, value } = e.target;
     setFormInput((prevValue) => ({ ...prevValue, [name]: value }));
   };
-  console.log(formInput);
 
   const resetForm = () => {
     setFormInput({});

@@ -4,7 +4,9 @@ import CurrencyFlag from 'react-currency-flags';
 function CurrencyWithFlag({ currencyCode }) {
   return (
     <div className="currency-with-flag">
-      <CurrencyFlag currency={currencyCode} width={50} />
+      <div className="currency-flag">
+        <CurrencyFlag currency={currencyCode} width={50} />
+      </div>
       <span className="currency-code">{currencyCode}</span>
     </div>
   );
