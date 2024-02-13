@@ -1,4 +1,5 @@
 
+
 # Currency Converter App - Mini Project Series
 
 This is an assignment project for Coding in Colour - Full Stack Dev program.
@@ -6,8 +7,8 @@ This is an assignment project for Coding in Colour - Full Stack Dev program.
 We will be building a full-stack currency converter app. This assignment will be the first small step in that direction. We will be setting up a basic node-express server to serve as a starting point for what will be the backend of this full-stack app.
 - [x] **Assignment 1** - Setting up an **node-express server** with endpoints to receive requests and send responses 
 - [x] **Assignment 2** - Creating an SQL database using **PostgreSQL** on **Render** to create a database that holds our data and **pgAdmin** to view the content of our database, which connects to the node-express server.  
-- [x] **Assignment 3** -Creating a front-end React UI that allows users to use the app (without REST/POSTMAN client) **<--- WE ARE HERE**
-- [ ] Assignment 4 - Adding unit and integration testing to the full-stack currency converter app
+- [x] **Assignment 3** -Creating a front-end React UI that allows users to use the app (without REST/POSTMAN client) 
+- [ ] **Assignment 4** - Adding unit and integration testing to the full-stack currency converter app **<--- WE ARE HERE**
 - [ ] Assignment 5 - Adding front-end and back-end testing to the full-stack currency converter app
 - [ ] Assignment 6 - Deploying the app with a live-link, with a CI/CD pipeline
 
@@ -83,5 +84,45 @@ Please create a new Git branch and call it "assignment 3" and do this assignment
 - [x]   Design of the components is  **up to you**. An image has been added to show what is required.
 - [x]   For the Login and Sign up part its just designing the features, **do not implement**  any functionality.
 - [x]   **Addendum:** Despite currency update, and deletion being done by currencyCode, you  **should not**  modify the endpoints you have created in Assignment 1. It is possible to get the id of what you want to update or delete, just using the currencyCode with the information you have in the front-end, solely with the default bulk **GET** request.
+
+</details>
+
+<details>
+    <summary><h4>Assignment 4</h4></summary>
+
+### **Part 1**
+
+- [ ]  Download and extract the zip file changes  **[here](https://canvas.instructure.com/courses/7808622/files/242355566?wrap=1 "changes.zip") [Download here](https://canvas.instructure.com/courses/7808622/files/242355566/download?download_frd=1).**
+- [ ]   Within your **client**  directory in your project, inside of  **src**, create a  **tests**  directory, and copy the contents of **part1**  there.
+- [ ]   You will notice a **currency_utils.js**  file, as well as a **currency.test.js**  file, please copy the **currency_utils.js**  file to a **utils**  directory within your **client**  (if it already exists place it there, otherwise make a new directory to receive this file). You may need to update the **currency.test.js** import of the **currency_utils.js**  file with the right path.
+- [ ]   Now, install **jest**  by typing **'npm install jest'**  in your **client**  directory, and add the following command to the **package.json** within the **scripts**, within the **"test" command**
+    
+    _jest --verbose -runInBand_. You'll notice now when you type **npm run test**, the tests run. The first should fail (implemented), and the other four should pass (not-implemented).
+    
+- [ ]  At this point, first implement the tests inside of **currency.test.js**, and then work on the implementation of the **convertCurrency** function. You can now test if your implementation is correct in real-time.
+
+- [ ]  **Hint: for the convertCurrency function, it may be helpful to think of implementing it in cases. There are four cases to consider when it comes to converting currencies: CDN to CDN conversion, CDN to non-CDN conversion, non-CDN to CDN conversion, and non-CDN to non-CDN conversion.**
+
+### **Part 2**
+
+- [ ]   Within the zip file you downloaded in  **Part 1**, there is also a **part2**  folder.
+- [ ]   Within your **client**  directory in your project, inside of  **src/****tests**  directory, copy the contents of  **part2**  there
+- [ ]   At the top of  **currency_component.test.js** file, you will notice a list of instructions to set up the local environment for testing React applications. Please follow the instructions and refer to Lecture 127 slides if you find any difficulties in setting up the environment.
+- [ ]   Write one unit test to test if the conversion section is working as intended.
+- [ ]   Use "render" to render the component(s), "screen" to select any element, and "user" to emulate user behaviour.
+- [ ]  We should assert that once the button is clicked, then the function associated is called and the corresponding text is updated.
+
+### **Part 3**
+
+- [ ]  Within the zip file you downloaded in  **Part 1**, there is also a **part3**  folder.
+- [ ]   Within your **server** directory in your project, create a **tests**  directory, and copy the contents of **part3** there.
+- [ ]   One thing you need to change before you do anything else is to modify your **server.js**  file to, instead of only listening to the express-app, to assign the app.listen(...) to some variable, and then export it.  _If confusing, please see the supertest example we went over for a reference of how to do this._
+- [ ]   Now, within your  **server**  directory, install the following package (cross-env) by typing this command,  _npm install cross-env --save-dev_
+- [ ]   Now, create a testCurrency model, it will be almost exactly the same as the Currency model, but we neither want a  **countryId** attribute anymore, nor a reference to the  **Country**  table, also the modelName attribute is 'testCurrency' instead of 'Currency'. We are doing this to make the tests a bit simpler, as we won't have a reference to another table, since we want to test the Currencies independently.
+- [ ]  In order to make sure our tests, which use the server, properly interact with the testCurrency in the respective server endpoints, you need to, depending on the NODE_ENV set (as we saw during lecture) import the Currency or testCurrency model within your routers. This is also a good time to setup some basic scripts that will either set NODE_ENV to development or test when starting the server. In order to test this, you can start the server in either test or development mode, and send **.rest**  requests to it using the **REST Client**, and see if you're getting the respective table (Currency or testCurrency) entries. You may need to remove error-checking for the request body's content in order to get the POST to work (because we aren't sending countryId anymore in our tests)
+- [ ]  Now, install **jest**  by typing **'npm install jest'**  in your  **server** directory, and also install  **supertest**, by typing  **'npm install supertest'**. Now, add the following command to the  **package.json** within the **scripts** within the  **"test" command,** _cross-env NODE_ENV=test_ _jest --verbose -runInBand_. You'll notice now when you type **npm run test**, the tests run. Most will properly fail, or not run at this point. You'll need to go through the **currency_api.test.js** file, as well as the **test_helper.js** file and add the correct paths to the specified imports.
+- [ ]  Because we are clearing the testCurrency table before each test, it doesn't matter what is in the table, it only matters that the table exists, and it should exist at this point if your **initData.js**  was run and is working correctly.
+- [ ]  The **GET** tests should be passing if everything is working correctly. Please implement the **POST, PUT,** and **DELETE** tests, respectively. You only need to make a single test in each case. Make use of the helper functions we have provided where appropriate.  **Note: there's a slight typo in the test, where it says 'adding a currency' in the POST, PUT, and DELETE tests. It should say, 'adding a currency', 'updating a currency', and 'deleting a currency', respectively.**
+
 
 </details>
