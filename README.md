@@ -92,16 +92,16 @@ Please create a new Git branch and call it "assignment 3" and do this assignment
 
 ### **Part 1**
 
-- [ ]  Download and extract the zip file changes  **[here](https://canvas.instructure.com/courses/7808622/files/242355566?wrap=1 "changes.zip") [Download here](https://canvas.instructure.com/courses/7808622/files/242355566/download?download_frd=1).**
-- [ ]   Within your **client**  directory in your project, inside of  **src**, create a  **tests**  directory, and copy the contents of **part1**  there.
-- [ ]   You will notice a **currency_utils.js**  file, as well as a **currency.test.js**  file, please copy the **currency_utils.js**  file to a **utils**  directory within your **client**  (if it already exists place it there, otherwise make a new directory to receive this file). You may need to update the **currency.test.js** import of the **currency_utils.js**  file with the right path.
-- [ ]   Now, install **jest**  by typing **'npm install jest'**  in your **client**  directory, and add the following command to the **package.json** within the **scripts**, within the **"test" command**
+- [x]  Download and extract the zip file changes  **[here](https://canvas.instructure.com/courses/7808622/files/242355566?wrap=1 "changes.zip") [Download here](https://canvas.instructure.com/courses/7808622/files/242355566/download?download_frd=1).**
+- [x]   Within your **client**  directory in your project, inside of  **src**, create a  **tests**  directory, and copy the contents of **part1**  there.
+- [x]   You will notice a **currency_utils.js**  file, as well as a **currency.test.js**  file, please copy the **currency_utils.js**  file to a **utils**  directory within your **client**  (if it already exists place it there, otherwise make a new directory to receive this file). You may need to update the **currency.test.js** import of the **currency_utils.js**  file with the right path.
+- [x]   Now, install **jest**  by typing **'npm install jest'**  in your **client**  directory, and add the following command to the **package.json** within the **scripts**, within the **"test" command**
     
     _jest --verbose -runInBand_. You'll notice now when you type **npm run test**, the tests run. The first should fail (implemented), and the other four should pass (not-implemented).
     
-- [ ]  At this point, first implement the tests inside of **currency.test.js**, and then work on the implementation of the **convertCurrency** function. You can now test if your implementation is correct in real-time.
+- [x]  At this point, first implement the tests inside of **currency.test.js**, and then work on the implementation of the **convertCurrency** function. You can now test if your implementation is correct in real-time.
 
-- [ ]  **Hint: for the convertCurrency function, it may be helpful to think of implementing it in cases. There are four cases to consider when it comes to converting currencies: CDN to CDN conversion, CDN to non-CDN conversion, non-CDN to CDN conversion, and non-CDN to non-CDN conversion.**
+- [x]  **Hint: for the convertCurrency function, it may be helpful to think of implementing it in cases. There are four cases to consider when it comes to converting currencies: CDN to CDN conversion, CDN to non-CDN conversion, non-CDN to CDN conversion, and non-CDN to non-CDN conversion.**
 
 ### **Part 2**
 
