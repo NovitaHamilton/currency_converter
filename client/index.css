@@ -147,9 +147,14 @@ button {
   margin-top: 1rem;
 }
 
-.currency-code {
+.currency-code select {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 600;
+  color: #7375b6;
+}
+
+.currency-code option {
+  font-size: 1.5rem;
 }
 
 .convert-button {
