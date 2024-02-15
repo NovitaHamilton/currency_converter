@@ -7,12 +7,8 @@ import convertCurrency from '../utils/currency_utils';
 
 function Conversion() {
   const [currencies, setCurrencies] = useState([]);
-  const [currencyFrom, setCurrencyFrom] = useState({
-    currencyCode: 'CAD',
-  });
-  const [currencyTo, setCurrencyTo] = useState({
-    currencyCode: 'USD',
-  });
+  const [currencyFrom, setCurrencyFrom] = useState('');
+  const [currencyTo, setCurrencyTo] = useState('');
   const [amountFrom, setAmountFrom] = useState(1);
   const [amountTo, setAmountTo] = useState(0);
 

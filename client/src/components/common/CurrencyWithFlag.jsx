@@ -14,7 +14,7 @@ function CurrencyWithFlag({ currencyCode, currencies, onCurrencyChange }) {
   return (
     <div className="currency-with-flag">
       <div className="currency-flag">
-        <CurrencyFlag currency={currencyCode} width={50} />
+        {currencyCode && <CurrencyFlag currency={currencyCode} width={50} />}
       </div>
       <span className="currency-code">
         <select
