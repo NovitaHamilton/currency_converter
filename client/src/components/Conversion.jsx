@@ -96,7 +96,7 @@ function Conversion() {
           <input
             type="number"
             value={amountFrom}
-            name="currencyFrom"
+            name="amount-from"
             onChange={handleAmountFromChange}
           ></input>
         </div>
@@ -113,6 +113,7 @@ function Conversion() {
             onCurrencyChange={handleCurrencyToChange}
           ></CurrencyWithFlag>
           <input
+            name="amount-to"
             type="number"
             value={amountTo}
             onChange={handleAmountToChange}
