@@ -1,4 +1,4 @@
-const convertCurrency = require('../utils/currency_utils'); // Update this
+const { convertCurrencyAmountFrom } = require('../utils/currency_utils'); // Update this
 
 /**
  * The tests below will be based on the following conversion amounts,
@@ -33,7 +33,7 @@ const gbpCurrency = {
  * Therefore, we should return the same amount
  */
 test('same currency conversion', () => {
-  const result = convertCurrency(cadCurrency, cadCurrency, 100);
+  const result = convertCurrencyAmountFrom(cadCurrency, cadCurrency, 100);
   expect(result).toBe(100);
 });
 
@@ -43,7 +43,7 @@ test('same currency conversion', () => {
  * Hint: the result should be $58 GBP according to our provided currencies.
  */
 test('CDN to GBP conversion', () => {
-  const result = convertCurrency(cadCurrency, gbpCurrency, 100);
+  const result = convertCurrencyAmountFrom(cadCurrency, gbpCurrency, 100);
   expect(result).toBe(58);
 });
 
@@ -52,7 +52,7 @@ test('CDN to GBP conversion', () => {
  * Write a test that performs a currency conversion from CAD to USD, for $75 CDN
  */
 test('CDN to USD conversion', () => {
-  const result = convertCurrency(cadCurrency, usdCurrency, 75);
+  const result = convertCurrencyAmountFrom(cadCurrency, usdCurrency, 75);
   expect(result).toBe(56.25);
 });
 
@@ -61,7 +61,7 @@ test('CDN to USD conversion', () => {
  * Write a test that performs a currency conversion from USD to GBP, for $200 USD
  */
 test('USD to GBP conversion', () => {
-  const result = convertCurrency(usdCurrency, gbpCurrency, 200);
+  const result = convertCurrencyAmountFrom(usdCurrency, gbpCurrency, 200);
   expect(result).toBe(154.67);
 });
 
@@ -70,6 +70,6 @@ test('USD to GBP conversion', () => {
  * Write a test that performs a currency conversion from GBP to CAD, for $50 GBP
  */
 test('GBP to CAD conversion', () => {
-  const result = convertCurrency(gbpCurrency, cadCurrency, 50);
+  const result = convertCurrencyAmountFrom(gbpCurrency, cadCurrency, 50);
   expect(result).toBe(86.21);
 });

@@ -9,26 +9,41 @@
  * @performs a currency conversion between integer amount of currencyA to an integer amount of currencyB
  * @returns an integer
  */
-const convertCurrency = (currencyA, currencyB, amount) => {
+const convertCurrencyAmountFrom = (currencyA, currencyB, amountFrom) => {
+  console.log('AmountFrom:', amountFrom);
+  console.log(currencyA, currencyB);
   // CAD to CAD conversion
   if (currencyA === currencyB) {
-    return amount;
+    return amountFrom;
     // CAD to non-CAD
   } else if (currencyA === 'CAD') {
-    return parseFloat(amount * currencyB.conversionRate).toFixed(2);
+    return parseFloat(amountFrom * currencyB.conversionRate).toFixed(2);
   }
   // Non-CAD to CAD
   else if (currencyB === 'CAD') {
-    return parseFloat((amount / currencyA.conversionRate).toFixed(2));
+    return parseFloat((amountFrom / currencyA.conversionRate).toFixed(2));
   }
-  // Non-CAD to CAD
+  // Non-CAD to non-CAD
   else {
     return parseFloat(
-      ((amount / currencyA.conversionRate) * currencyB.conversionRate).toFixed(
-        2
-      )
+      (
+        (amountFrom / currencyA.conversionRate) *
+        currencyB.conversionRate
+      ).toFixed(2)
     );
   }
 };
 
-export default convertCurrency;
+const convertCurrencyAmountTo = (currencyA, currencyB, amountTo) => {
+  console.log('AmountTo:', amountTo);
+  console.log(currencyA, currencyB);
+  // CAD to CAD conversion
+  if (currencyA === currencyB) {
+    return amountTo;
+    // CAD to non-CAD
+  } else {
+    return parseFloat(amountTo / currencyB.conversionRate).toFixed(2);
+  }
+};
+
+export { convertCurrencyAmountFrom, convertCurrencyAmountTo };

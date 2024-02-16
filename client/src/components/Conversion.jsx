@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import CurrencyWithFlag from './common/CurrencyWithFlag';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import currencyService from '../services/currencyService';
-import convertCurrency from '../utils/currency_utils';
+import {
+  convertCurrencyAmountFrom,
+  convertCurrencyAmountTo,
+} from '../utils/currency_utils';
 
 function Conversion() {
   const [currencies, setCurrencies] = useState([]);
@@ -11,17 +14,25 @@ function Conversion() {
   const [currencyTo, setCurrencyTo] = useState('');
   const [amountFrom, setAmountFrom] = useState(1);
   const [amountTo, setAmountTo] = useState(0);
+  const [conversionSource, setConversionSource] = useState(''); // To keep track of the source that triggers useEffect for conversion
 
   // To initialize currencies, getting data from DB
   useEffect(() => {
     initCurrencies();
   }, []);
 
+  // To trigger conversion when there's a change on amountFrom, currencyTo, currencies, amountTo, conversionSource
+  useEffect(() => {
+    if (conversionSource === 'amountTo') {
+      handleConversionAmountTo();
+    } else {
+      handleConversionAmountFrom();
+    }
+  }, [amountFrom, currencyTo, currencies, amountTo, conversionSource]);
+
   const initCurrencies = async () => {
     try {
       const data = await currencyService.getCurrencies();
-      console.log('Fetched currencies:', data);
-
       setCurrencies(data);
 
       // Set default values after currencies data has been fetched
@@ -39,6 +50,14 @@ function Conversion() {
       } else {
         console.error('DEfault currencies not found.');
       }
+
+      // Calculate the initial amountTo (in USD)
+      const initialAmountTo = convertCurrencyAmountFrom(
+        currencyFrom,
+        currencyTo,
+        amountFrom
+      );
+      setAmountTo(initialAmountTo);
     } catch (error) {
       console.error('Error fetching currencies', error);
     }
@@ -47,39 +66,48 @@ function Conversion() {
   // To handle changes on currency code dropdown
   const handleCurrencyFromChange = (selectedCurrency) => {
     setCurrencyFrom(selectedCurrency);
-    handleConversion();
   };
-  console.log('Currency From:', currencyFrom);
 
   const handleCurrencyToChange = (selectedCurrency) => {
     setCurrencyTo(selectedCurrency);
-    handleConversion();
   };
-  console.log('Currency To:', currencyTo);
 
   // To handle change on amount input
   const handleAmountFromChange = (e) => {
     e.preventDefault();
-    const value = Number(e.target.value);
-    setAmountFrom(value);
-    handleConversion();
+    const value = e.target.value.trim();
+    setAmountFrom(value || '');
+    setConversionSource('amountFrom');
   };
 
   const handleAmountToChange = (e) => {
     e.preventDefault();
-    const value = Number(e.target.value);
-    setAmountTo(value);
-    handleConversion();
+    const value = e.target.value.trim();
+    setAmountTo(value || '');
+    setConversionSource('amountTo');
   };
 
   // To handle conversion
-  const handleConversion = () => {
-    const convertedAmount = convertCurrency(
+  const handleConversionAmountFrom = () => {
+    // if (currencyFrom && currencyFrom.currencyCode === 'CAD') {
+    const convertedAmount = convertCurrencyAmountFrom(
       currencyFrom,
       currencyTo,
       amountFrom
     );
     setAmountTo(convertedAmount);
+    // }
+  };
+
+  const handleConversionAmountTo = () => {
+    // if (currencyFrom && currencyFrom.currencyCode === 'CAD') {
+    const convertedAmount = convertCurrencyAmountTo(
+      currencyFrom,
+      currencyTo,
+      amountTo
+    );
+    setAmountFrom(convertedAmount);
+    // }
   };
 
   return (
@@ -91,6 +119,7 @@ function Conversion() {
             currencies={currencies}
             value={currencyFrom.currencyCode}
             onCurrencyChange={handleCurrencyFromChange}
+            disabled={true}
           ></CurrencyWithFlag>
 
           <input
@@ -102,7 +131,8 @@ function Conversion() {
         </div>
 
         <div className="arrow-icon">
-          <FontAwesomeIcon icon={faExchangeAlt} />
+          <FontAwesomeIcon icon={faArrowRight} />
+          {/* <FontAwesomeIcon icon={faExchangeAlt} /> */}
         </div>
 
         <div className="currency-to">
