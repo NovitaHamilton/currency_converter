@@ -7,12 +7,12 @@ import UpdateCurrency from './components/UpdateCurrency';
 import DeleteCurrency from './components/DeleteCurrency';
 
 const App = () => {
-  console.log('test');
+  const mockFunction = () => {};
   return (
     <div className="App">
       <h1>Currency Converter</h1>
       <div className="first-section">
-        <Conversion />
+        <Conversion convertCurrencyAmountFromMock={mockFunction} />
         <Login />
       </div>
 

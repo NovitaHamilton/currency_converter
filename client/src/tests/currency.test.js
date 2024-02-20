@@ -26,50 +26,51 @@ const gbpCurrency = {
  * Please read here: https://jestjs.io/docs/getting-started
  * for more information on using jest to perform testing
  */
+describe('Testing conversion', () => {
+  /**
+   * Test 1: Completed
+   * This test performs a currency conversion, where it's really just the same currency
+   * Therefore, we should return the same amount
+   */
+  test('same currency conversion', () => {
+    const result = convertCurrencyAmountFrom(cadCurrency, cadCurrency, 100);
+    expect(result).toBe(100);
+  });
 
-/**
- * Test 1: Completed
- * This test performs a currency conversion, where it's really just the same currency
- * Therefore, we should return the same amount
- */
-test('same currency conversion', () => {
-  const result = convertCurrencyAmountFrom(cadCurrency, cadCurrency, 100);
-  expect(result).toBe(100);
-});
+  /**
+   * Test 2: TODO
+   * Write a test that performs a currency conversion from CAD to GBP, for $100 CDN
+   * Hint: the result should be $58 GBP according to our provided currencies.
+   */
+  test('CDN to GBP conversion', () => {
+    const result = convertCurrencyAmountFrom(cadCurrency, gbpCurrency, 100);
+    expect(result).toBe(58);
+  });
 
-/**
- * Test 2: TODO
- * Write a test that performs a currency conversion from CAD to GBP, for $100 CDN
- * Hint: the result should be $58 GBP according to our provided currencies.
- */
-test('CDN to GBP conversion', () => {
-  const result = convertCurrencyAmountFrom(cadCurrency, gbpCurrency, 100);
-  expect(result).toBe(58);
-});
+  /**
+   * Test 3: TODO
+   * Write a test that performs a currency conversion from CAD to USD, for $75 CDN
+   */
+  test('CDN to USD conversion', () => {
+    const result = convertCurrencyAmountFrom(cadCurrency, usdCurrency, 75);
+    expect(result).toBe(56.25);
+  });
 
-/**
- * Test 3: TODO
- * Write a test that performs a currency conversion from CAD to USD, for $75 CDN
- */
-test('CDN to USD conversion', () => {
-  const result = convertCurrencyAmountFrom(cadCurrency, usdCurrency, 75);
-  expect(result).toBe(56.25);
-});
+  /**
+   * Test 4: TODO
+   * Write a test that performs a currency conversion from USD to GBP, for $200 USD
+   */
+  test('USD to GBP conversion', () => {
+    const result = convertCurrencyAmountFrom(usdCurrency, gbpCurrency, 200);
+    expect(result).toBe(154.67);
+  });
 
-/**
- * Test 4: TODO
- * Write a test that performs a currency conversion from USD to GBP, for $200 USD
- */
-test('USD to GBP conversion', () => {
-  const result = convertCurrencyAmountFrom(usdCurrency, gbpCurrency, 200);
-  expect(result).toBe(154.67);
-});
-
-/**
- * Test 5: TODO
- * Write a test that performs a currency conversion from GBP to CAD, for $50 GBP
- */
-test('GBP to CAD conversion', () => {
-  const result = convertCurrencyAmountFrom(gbpCurrency, cadCurrency, 50);
-  expect(result).toBe(86.21);
+  /**
+   * Test 5: TODO
+   * Write a test that performs a currency conversion from GBP to CAD, for $50 GBP
+   */
+  test('GBP to CAD conversion', () => {
+    const result = convertCurrencyAmountFrom(gbpCurrency, cadCurrency, 50);
+    expect(result).toBe(86.21);
+  });
 });

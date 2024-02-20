@@ -10,8 +10,6 @@
  * @returns an integer
  */
 const convertCurrencyAmountFrom = (currencyA, currencyB, amountFrom) => {
-  console.log('AmountFrom:', amountFrom);
-  console.log(currencyA, currencyB);
   // CAD to CAD conversion
   if (currencyA === currencyB) {
     return amountFrom;
@@ -35,8 +33,6 @@ const convertCurrencyAmountFrom = (currencyA, currencyB, amountFrom) => {
 };
 
 const convertCurrencyAmountTo = (currencyA, currencyB, amountTo) => {
-  console.log('AmountTo:', amountTo);
-  console.log(currencyA, currencyB);
   // CAD to CAD conversion
   if (currencyA === currencyB) {
     return amountTo;

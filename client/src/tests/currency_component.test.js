@@ -16,30 +16,35 @@
  *******       
  * Necessary import:
  */
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-/**
- * Import all the related component(s) here:
- * 
- * 
- */
+import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Conversion from '../components/Conversion';
+import { convertCurrencyAmountFrom } from '../utils/currency_utils';
 
 /**
- * we will test the conversion section that contains: currency code & amount input fields, 
- *   Convert button and converted amount text. 
+ * we will test the conversion section that contains: currencyFrom, currencyTo, amountTo and amountFrom input fields
  * You need to do write one unit test that ensure the functionality of the section is working as intended.
- * We need to test that the user will be able to type into the input fields then click the Convert button.
- * Once the button is clicked, the conversion amount should be displayed on the screen.
+ * We need to test that the user will be able to type into the input fields
+ * Once the input field change the corresponding amount should update
  */
 
+test('Testing conversion section by Amount From change', () => {
+  // convertCurrency is a mock function now
+  const convertCurrencyAmountFromMock = jest.fn();
 
-test('Testing conversion section', () => {
-    // convertCurrency is a mock function now
-    const convertCurrency = jest.fn();
-    const user = userEvent.setup();
+  // Set up user event
+  const user = userEvent.setup();
 
-    // Your code here
+  // Render the conversion component
+  render(
+    <Conversion convertCurrencyAmountFromMock={convertCurrencyAmountFromMock} />
+  );
+
+  // Simulate changing the amountFrom value
+  const newAmountFrom = '1';
+  user.type(screen.getByTestId('amountFromInput-test'), newAmountFrom);
+
+  // Validate that the convertCurrencyAMountFrom is called with the updated amountFrom
+  expect(convertCurrencyAmountFromMock).toHaveBeenCalled();
 });
-
-

@@ -8,7 +8,7 @@ import {
   convertCurrencyAmountTo,
 } from '../utils/currency_utils';
 
-function Conversion() {
+function Conversion({ convertCurrencyAmountFromMock }) {
   const [currencies, setCurrencies] = useState([]);
   const [currencyFrom, setCurrencyFrom] = useState('');
   const [currencyTo, setCurrencyTo] = useState('');
@@ -96,6 +96,7 @@ function Conversion() {
       amountFrom
     );
     setAmountTo(convertedAmount);
+    convertCurrencyAmountFromMock();
     // }
   };
 
@@ -111,7 +112,7 @@ function Conversion() {
   };
 
   return (
-    <div className="Conversion">
+    <div className="Conversion" data-testid="conversion-test">
       <form>
         <div className="currency-from">
           <CurrencyWithFlag
@@ -126,6 +127,7 @@ function Conversion() {
             type="number"
             value={amountFrom}
             name="amount-from"
+            data-testid="amountFromInput-test"
             onChange={handleAmountFromChange}
           ></input>
         </div>
