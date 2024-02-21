@@ -36,6 +36,8 @@ app.use('/api/currency-countryName/', currencyCountryNameRouter); // Add countri
 app.use(middleware.unknownEndpoint); // to handle unknown endpoint
 
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
 });
+
+module.exports = server;
