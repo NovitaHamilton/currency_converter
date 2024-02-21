@@ -28,7 +28,14 @@ function Conversion({ convertCurrencyAmountFromMock }) {
     } else {
       handleConversionAmountFrom();
     }
-  }, [amountFrom, currencyTo, currencies, amountTo, conversionSource]);
+  }, [
+    amountFrom,
+    currencyFrom,
+    currencyTo,
+    currencies,
+    amountTo,
+    conversionSource,
+  ]);
 
   const initCurrencies = async () => {
     try {
@@ -120,7 +127,6 @@ function Conversion({ convertCurrencyAmountFromMock }) {
             currencies={currencies}
             value={currencyFrom.currencyCode}
             onCurrencyChange={handleCurrencyFromChange}
-            disabled={true}
           ></CurrencyWithFlag>
 
           <input

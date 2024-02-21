@@ -16,13 +16,11 @@ const convertCurrencyAmountFrom = (currencyA, currencyB, amountFrom) => {
     // CAD to non-CAD
   } else if (currencyA === 'CAD') {
     return parseFloat(amountFrom * currencyB.conversionRate).toFixed(2);
-  }
-  // Non-CAD to CAD
-  else if (currencyB === 'CAD') {
+    // Non-CAD to CAD
+  } else if (currencyB === 'CAD') {
     return parseFloat((amountFrom / currencyA.conversionRate).toFixed(2));
-  }
-  // Non-CAD to non-CAD
-  else {
+    // Non-CAD to non-CAD
+  } else {
     return parseFloat(
       (
         (amountFrom / currencyA.conversionRate) *
@@ -37,8 +35,19 @@ const convertCurrencyAmountTo = (currencyA, currencyB, amountTo) => {
   if (currencyA === currencyB) {
     return amountTo;
     // CAD to non-CAD
+  } else if (currencyA === 'CAD') {
+    return parseFloat((amountTo * currencyB.conversionRate).toFixed(2));
+    // Non-CAD to CAD
+  } else if (currencyB === 'CAD') {
+    return parseFloat((amountTo * currencyA.conversionRate).toFixed(2));
+    // Non-CAD to CAD
   } else {
-    return parseFloat(amountTo / currencyB.conversionRate).toFixed(2);
+    return parseFloat(
+      (
+        (amountTo * currencyA.conversionRate) /
+        currencyB.conversionRate
+      ).toFixed(2)
+    );
   }
 };
 

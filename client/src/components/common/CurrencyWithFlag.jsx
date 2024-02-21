@@ -1,12 +1,7 @@
 import React from 'react';
 import CurrencyFlag from 'react-currency-flags';
 
-function CurrencyWithFlag({
-  currencyCode,
-  currencies,
-  onCurrencyChange,
-  disabled,
-}) {
+function CurrencyWithFlag({ currencyCode, currencies, onCurrencyChange }) {
   console.log(currencyCode);
   const handleCurrencyChange = (e) => {
     const selectedCurrency = currencies.find(
@@ -26,7 +21,6 @@ function CurrencyWithFlag({
           name="currencyCode"
           value={currencyCode}
           onChange={handleCurrencyChange}
-          disabled={disabled}
         >
           {currencies.map((option) => (
             <option key={option.currencyCode} value={option.currencyCode}>
