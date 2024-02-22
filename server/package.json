@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "devServer": "cross-env NODE_ENV=development nodemon server.js",
+    "testServer": "cross-env NODE_ENV=test nodemon server.js",
+    "createCurrencies": "cross-env NODE_ENV=development node createCurrencies.js",
+    "createTestCurrencies": "cross-env NODE_ENV=test node createCurrencies.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Student",

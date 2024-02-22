@@ -1,4 +1,7 @@
-const Currency = require('./models/currency');
+const Currency =
+  process.env.NODE_ENV === 'test'
+    ? require('./models/testCurrency')
+    : require('./models/currency');
 
 Currency.sync().then(() => {
   console.log('Currency table has been successfully created');
