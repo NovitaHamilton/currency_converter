@@ -22,7 +22,7 @@ describe('GET tests', () => {
    * This is an example test, where we are checking if we have 2 currencies in the database as expected
    * we added the two currencies in the 'beforeEach' setup phase
    */
-  test('we have 2 currencies at the start', async () => {
+  test('We have 2 currencies at the start', async () => {
     const response = await api.get('/api/currencies');
     expect(response.body).toHaveLength(2);
   });
@@ -35,7 +35,7 @@ describe('GET tests', () => {
    * We are restricting it to these two, rather than a complete equals, since the table provides other extraneous values
    * such as time of last update and so on
    */
-  test('getting a specific currency', async () => {
+  test('Getting a specific currency', async () => {
     const canadianCurrency = helper.initialCurrencies[0];
     const getId = canadianCurrency.id;
 
@@ -91,7 +91,24 @@ describe('POST tests', () => {
 
 describe('PUT tests', () => {
   // Update a currency, and verify that a currency has been updated
-  test('adding a currency', () => {});
+  test('Updating a currency', async () => {
+    // Define the newRate and the id of the currency to be updated
+    const newRate = 0.73;
+    const id = 2;
+
+    // Send it to the endpoint
+    const response = await api
+      .put(`/api/currencies/${id}/${newRate}`)
+      .send(newRate.toString())
+      .expect(200);
+
+    console.log(response.body);
+
+    const updatedCurrency = response.body;
+    // Check if the conversion rate is updated to the newRate
+    expect(newRate).toEqual(updatedCurrency.conversionRate);
+    expect(id).toEqual(updatedCurrency.id);
+  });
 });
 
 describe('DELETE tests', () => {
