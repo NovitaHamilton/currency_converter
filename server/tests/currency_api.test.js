@@ -61,7 +61,7 @@ describe('GET tests', () => {
  * IMPORTANT: You are only working with currencies, we removed the countries connection to make it a bit simpler
  */
 
-describe('POST tests', () => {
+describe('POST request', () => {
   // Add a currency, and verify that a currency is added to our database
   test('Adding a currency', async () => {
     // Create new currency
@@ -89,7 +89,7 @@ describe('POST tests', () => {
   });
 });
 
-describe('PUT tests', () => {
+describe('PUT request', () => {
   // Update a currency, and verify that a currency has been updated
   test('Updating a currency', async () => {
     // Define the newRate and the id of the currency to be updated
@@ -110,7 +110,7 @@ describe('PUT tests', () => {
   });
 });
 
-describe('DELETE tests', () => {
+describe('DELETE request', () => {
   // Delete a currency, and verify that a currency has been deleted
   test('Deleting a currency', async () => {
     // Define the id of the currency to delete
@@ -118,11 +118,15 @@ describe('DELETE tests', () => {
     const id = currencyToDelete.id;
 
     // Send it to endpoint
-    const response = await api.delete(`/api/currencies/${id}`).expect(200);
+    await api.delete(`/api/currencies/${id}`).expect(200);
 
     // Check the new length of the currencies, should change from 2 to 1
     const currencies = await helper.currenciesInDb();
     expect(currencies).toHaveLength(1);
+
+    // Check that the deleted currency not found
+    const response = await api.get(`/api/currencies/${id}`).expect(404);
+    expect(response.body.error).toEqual('Currency not found');
   });
 });
 
