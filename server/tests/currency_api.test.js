@@ -103,8 +103,8 @@ describe('PUT tests', () => {
       .send(newRate.toString())
       .expect(200);
 
-    const updatedCurrency = response.body;
     // Check if the conversion rate is updated to the newRate
+    const updatedCurrency = response.body;
     expect(newRate).toEqual(updatedCurrency.conversionRate);
     expect(id).toEqual(updatedCurrency.id);
   });
@@ -112,7 +112,18 @@ describe('PUT tests', () => {
 
 describe('DELETE tests', () => {
   // Delete a currency, and verify that a currency has been deleted
-  test('adding a currency', () => {});
+  test('adding a currency', async () => {
+    // Define the id of the currency to delete
+    const currencyToDelete = helper.initialCurrencies[1];
+    const id = currencyToDelete.id;
+
+    // Send it to endpoint
+    const response = await api.delete(`/api/currencies/${id}`).expect(200);
+
+    // Check the new length of the currencies, should change from 2 to 1
+    const currencies = await helper.currenciesInDb();
+    expect(currencies).toHaveLength(1);
+  });
 });
 
 afterAll(async () => {
