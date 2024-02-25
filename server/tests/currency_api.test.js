@@ -94,15 +94,14 @@ describe('PUT tests', () => {
   test('Updating a currency', async () => {
     // Define the newRate and the id of the currency to be updated
     const newRate = 0.73;
-    const id = 2;
+    const currencyToUpdate = helper.initialCurrencies[1];
+    const id = currencyToUpdate.id;
 
     // Send it to the endpoint
     const response = await api
       .put(`/api/currencies/${id}/${newRate}`)
       .send(newRate.toString())
       .expect(200);
-
-    console.log(response.body);
 
     const updatedCurrency = response.body;
     // Check if the conversion rate is updated to the newRate
