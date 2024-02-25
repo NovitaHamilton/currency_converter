@@ -63,7 +63,30 @@ describe('GET tests', () => {
 
 describe('POST tests', () => {
   // Add a currency, and verify that a currency is added to our database
-  test('adding a currency', () => {});
+  test('Adding a currency', async () => {
+    // Create new currency
+    const newCurrency = {
+      id: 3,
+      currencyCode: 'IDR',
+      conversionRate: 11562.78,
+    };
+
+    // Send it to the endpoint
+    const response = await api
+      .post(`/api/currencies/`)
+      .send(newCurrency)
+      .expect(201);
+
+    const currencyReceived = response.body;
+
+    // Compare the length of the database from 2 to 3 after the new currency added
+    const currencies = await helper.currenciesInDb();
+    expect(currencies).toHaveLength(3);
+
+    // Check if the currency added is the same as the one we get back
+    expect(newCurrency.id).toEqual(currencyReceived.id);
+    expect(newCurrency.currencyCode).toEqual(currencyReceived.currencyCode);
+  });
 });
 
 describe('PUT tests', () => {

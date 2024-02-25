@@ -17,13 +17,13 @@ Currency.init(
       primaryKey: false,
       allowNull: false,
     },
-    countryId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Country,
-        key: 'id',
-      },
-    },
+    // countryId: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: Country,
+    //     key: 'id',
+    //   },
+    // },
     conversionRate: {
       type: DataTypes.FLOAT,
       primaryKey: false,

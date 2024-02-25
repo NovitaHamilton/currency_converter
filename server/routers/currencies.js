@@ -117,7 +117,7 @@ currenciesRouter.post('/', async (request, response) => {
     // Validate data
     if (
       !content.currencyCode ||
-      !content.countryId ||
+      // !content.countryId ||
       content.conversionRate == null
     ) {
       return response.status(400).json({ error: 'Missing required input' });
@@ -126,7 +126,7 @@ currenciesRouter.post('/', async (request, response) => {
     // Create a new currency record
     const newCurrency = await Currency.create(content);
     // Respond with newly created currency
-    response.status(201).json({ newCurrency });
+    response.status(201).json(newCurrency);
   } catch (error) {
     console.error(error);
     response.status(500).json({ error: 'Internal server error' });
