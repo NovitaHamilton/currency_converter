@@ -2,9 +2,9 @@
  * Necessary imports, make sure you have these packages installed in your server directory
  */
 const supertest = require('supertest');
-const sequelize = require('...'); // Provide a path to your config.js or database.js file, wherever you export that sequelize
+const { sequelize } = require('../config/sequelize'); // Provide a path to your config.js or database.js file, wherever you export that sequelize
 const helper = require('./test_helper');
-const server = require('...'); // Provide a path to your server.js file, or wherever you are starting your server and add your endpoints via router
+const server = require('../server'); // Provide a path to your server.js file, or wherever you are starting your server and add your endpoints via router
 const api = supertest(server); // Creates a test api that will send requests where we want them to be sent
 
 beforeEach(async () => {
@@ -19,8 +19,8 @@ beforeEach(async () => {
 describe('GET tests', () => {
   /**
    * Completed:
-   * This is an example test, where we are checking if we have 2 blogs in the database as expected
-   * we added the two blogs in the 'beforeEach' setup phase
+   * This is an example test, where we are checking if we have 2 currencies in the database as expected
+   * we added the two currencies in the 'beforeEach' setup phase
    */
   test('we have 2 currencies at the start', async () => {
     const response = await api.get('/api/currencies');
