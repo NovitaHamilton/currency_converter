@@ -112,7 +112,7 @@ describe('PUT tests', () => {
 
 describe('DELETE tests', () => {
   // Delete a currency, and verify that a currency has been deleted
-  test('adding a currency', async () => {
+  test('Deleting a currency', async () => {
     // Define the id of the currency to delete
     const currencyToDelete = helper.initialCurrencies[1];
     const id = currencyToDelete.id;
