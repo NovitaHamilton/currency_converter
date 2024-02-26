@@ -1,0 +1,44 @@
+GET http://localhost:3001/
+
+###
+
+// To test getting countries
+GET http://localhost:3001/api/countries/
+
+###
+
+// To test getting particular country by id
+GET http://localhost:3001/api/countries/3
+
+###
+
+// To test error handling for getting particular currency by id if it's not available in the data
+GET http://localhost:3001/api/countries/10
+
+
+###
+
+// To test adding country (with hard coded information)
+POST http://localhost:3001/api/countries/
+Content-Type: application/json
+
+{
+    "name": "Chile"
+}
+
+###
+
+// To test error handling when info is missing on POST request (with hard coded information)
+POST http://localhost:3001/api/countries/
+Content-Type: application/json
+
+{
+    "name": ""
+}
+
+###
+
+// To test delete country by id
+DELETE http://localhost:3001/api/countries/13
+
+

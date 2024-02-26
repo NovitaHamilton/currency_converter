@@ -106,12 +106,8 @@ currenciesRouter.put('/:id/:newRate', (request, response) => {
  */
 currenciesRouter.delete('/:id', (request, response) => {
   const id = Number(request.params.id);
-  currencyToDelete = currencies.find((currency) => currency.id === id);
-  currencies = currencies.filter((currency) => currency !== currencyToDelete);
-
-  response
-    .status(204)
-    .json(`${currencyToDelete.currencyCode} has been successfully deleted`);
+  currencies = currencies.filter((currency) => currency.id !== id);
+  response.status(201).json(currencies);
 });
 
 module.exports = currenciesRouter;

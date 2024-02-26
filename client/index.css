@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+  background-color: rgb(240, 241, 241);
+  color: #7d80df;
+}
+
+input {
+  border-radius: 1rem;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 4rem;
+  margin: 0;
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.App h1 {
+  text-align: center;
+  font-size: 4rem;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+/*---Global Form Setting----*/
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.FormInput label {
+  padding-right: 1.5rem;
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.FormInput input {
+  font-size: 1.75rem;
+  padding: 0.5rem;
+}
+
+button {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: #66fecb;
+  border: transparent;
+  color: rgb(67, 66, 66);
+}
+
+/*----------------First Section----------------*/
+.first-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+/*-----Login----*/
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: inset 2rem 1rem #7375b6;
+}
+
+.Login h2 {
+  font-size: 3rem;
+  color: #7375b6;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+/*------Conversion------*/
+
+.Conversion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  padding: 3rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  width: 50%;
+  height: 22rem;
+  box-shadow: inset 2rem 1rem #7375b6;
+}
+
+.Conversion form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  gap: 5rem;
+}
+
+.currency-with-flag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.currency-flag {
+  border: solid 0.02rem;
+}
+
+.currency-from {
+  display: flex;
+  flex-direction: column;
+}
+
+.currency-from input,
+.currency-to input {
+  max-width: 20rem;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.currency-code select {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #7375b6;
+}
+
+.currency-code option {
+  font-size: 1.5rem;
+}
+
+.convert-button {
+  align-self: center;
+}
+
+.arrow-icon {
+  font-size: 5rem;
+}
+
+/*----------------Second Section----------------*/
+
+.second-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 8rem;
+}
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  border: 1px solid;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: inset 2rem 1rem #7375b6;
+}
+
+.CardTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+}

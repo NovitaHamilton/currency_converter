@@ -9,12 +9,12 @@ GET http://localhost:3001/api/currencies/
 ###
 
 // To test getting particular currency by id
-GET http://localhost:3001/api/currencies/2
+GET http://localhost:3001/api/currencies/8
 
 ###
 
 // To test error handling for getting particular currency by id if it's not available in the data
-GET http://localhost:3001/api/currencies/6
+GET http://localhost:3001/api/currencies/10
 
 
 ###
@@ -24,10 +24,9 @@ POST http://localhost:3001/api/currencies/
 Content-Type: application/json
 
 {
-    "content": {
-    "currencyCode": "IDR",
-    "country": "Indonesia",
-    "conversionRate": 11581.4}
+    "currencyCode": "GBP",
+    "countryId": 6,
+    "conversionRate": 0.58
 }
 
 ###
@@ -37,22 +36,21 @@ POST http://localhost:3001/api/currencies/
 Content-Type: application/json
 
 {
-    "content": {
     "currencyCode": "",
     "country": "United Kingdom",
-    "conversionRate": 0.59}
+    "conversionRate": 0.59
 }
 
 ###
 
 // To test modifying property conversionRate in a currency by id
-PUT http://localhost:3001/api/currencies/2/0.74
+PUT http://localhost:3001/api/currencies/2/0.75
 
 
 ###
 
 // To test delete currency by id
-DELETE http://localhost:3001/api/currencies/18
+DELETE http://localhost:3001/api/currencies/13
 
 ###
 
