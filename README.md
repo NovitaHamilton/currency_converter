@@ -7,9 +7,9 @@ We will be building a full-stack currency converter app. This assignment will be
 - [x] **Assignment 1** - Setting up an **node-express server** with endpoints to receive requests and send responses
 - [x] **Assignment 2** - Creating an SQL database using **PostgreSQL** on **Render** to create a database that holds our data and **pgAdmin** to view the content of our database, which connects to the node-express server.
 - [x] **Assignment 3** -Creating a front-end React UI that allows users to use the app (without REST/POSTMAN client)
-- [ ] **Assignment 4** - Adding unit and integration testing to the full-stack currency converter app **<--- WE ARE HERE**
-- [ ] Assignment 5 - Adding front-end and back-end testing to the full-stack currency converter app
-- [ ] Assignment 6 - Deploying the app with a live-link, with a CI/CD pipeline
+- [x] **Assignment 4** - Adding testing to the full-stack currency converter app 
+- [ ] **Assignment 5** - Deploying the app with a live-link, with a CI/CD pipeline  **<--- WE ARE HERE**
+
 
 ## Instructions per Assignment
 
@@ -56,7 +56,7 @@ We will be building a full-stack currency converter app. This assignment will be
 - [x] Install Sequelize Object-Relational Mapper and pg Postgres driver node modules. Create a config file and initialize a configuration for Sequelize with your Postgres db variables. Refer to the documentation links to an external site. to see how that is done in Sequelize.
 - [x] Create two models in the "models" folder: one for the Currency resource available from the previous assignment, however, now it should contain the following attributes: { id, currencyCode, countryId, conversionRate }. Note that we replaced country with countryId from the original starter code.
 - [x] The second model is for the Country resource which consists of: { id, name }. Refer to "Column Options" sections in the documentationLinks to an external site. to see how we can define primary keys and foreign keys in Sequelize. id is a primary key in both tables, and countryId is a foreign key in Currency table referring to id in Country table.
-- [ ] Add the Currency model to the Currency route that you created in the first assignment. Remove the currencies array and update your endpoints logic with Sequelize Currency model. Use the built-in functions provided by Sequelize.
+- [x] Add the Currency model to the Currency route that you created in the first assignment. Remove the currencies array and update your endpoints logic with Sequelize Currency model. Use the built-in functions provided by Sequelize.
 - [x] Similarly, create a new route for the Country resource using the Country model. Create GET, POST, and DELETE endpoints using Sequelize functions to query the database. GET: retrieve all records, POST: add a new a record, DELETE: remove one record.
 - [x] Use Sequelize functions to add an association (one-to-one) in Currency model (similar to the first line hereLinks to an external site.) where each currency should belong to one country. You should also pass the foreign key, that you have already defined, in this association. Associations in Sequelize equal to relations in SQL databases.
 - [x] Test your connection by adding, retrieving and deleting currencies and countries using HTTP requests sent to the express server from Postman or REST Client.
@@ -87,7 +87,7 @@ Please create a new Git branch and call it "assignment 3" and do this assignment
 
 <details>
     <summary><h4>Assignment 4</h4></summary>
-
+    
 ### **Part 1**
 
 - [x] Download and extract the zip file changes **[here](https://canvas.instructure.com/courses/7808622/files/242355566?wrap=1 'changes.zip') [Download here](https://canvas.instructure.com/courses/7808622/files/242355566/download?download_frd=1).**
@@ -101,23 +101,43 @@ Please create a new Git branch and call it "assignment 3" and do this assignment
 
 ### **Part 2**
 
-- [ ] Within the zip file you downloaded in **Part 1**, there is also a **part2** folder.
-- [ ] Within your **client** directory in your project, inside of **src/\*\***tests** directory, copy the contents of **part2\*\* there
-- [ ] At the top of **currency_component.test.js** file, you will notice a list of instructions to set up the local environment for testing React applications. Please follow the instructions and refer to Lecture 127 slides if you find any difficulties in setting up the environment.
-- [ ] Write one unit test to test if the conversion section is working as intended.
-- [ ] Use "render" to render the component(s), "screen" to select any element, and "user" to emulate user behaviour.
-- [ ] We should assert that once the button is clicked, then the function associated is called and the corresponding text is updated.
+- [x] Within the zip file you downloaded in **Part 1**, there is also a **part2** folder.
+- [x] Within your **client** directory in your project, inside of **src/\*\***tests** directory, copy the contents of **part2\*\* there
+- [x] At the top of **currency_component.test.js** file, you will notice a list of instructions to set up the local environment for testing React applications. Please follow the instructions and refer to Lecture 127 slides if you find any difficulties in setting up the environment.
+- [x] Write one unit test to test if the conversion section is working as intended.
+- [x] Use "render" to render the component(s), "screen" to select any element, and "user" to emulate user behaviour.
+- [x] We should assert that once the button is clicked, then the function associated is called and the corresponding text is updated.
 
 ### **Part 3**
 
-- [ ] Within the zip file you downloaded in **Part 1**, there is also a **part3** folder.
-- [ ] Within your **server** directory in your project, create a **tests** directory, and copy the contents of **part3** there.
-- [ ] One thing you need to change before you do anything else is to modify your **server.js** file to, instead of only listening to the express-app, to assign the app.listen(...) to some variable, and then export it. _If confusing, please see the supertest example we went over for a reference of how to do this._
-- [ ] Now, within your **server** directory, install the following package (cross-env) by typing this command, _npm install cross-env --save-dev_
-- [ ] Now, create a testCurrency model, it will be almost exactly the same as the Currency model, but we neither want a **countryId** attribute anymore, nor a reference to the **Country** table, also the modelName attribute is 'testCurrency' instead of 'Currency'. We are doing this to make the tests a bit simpler, as we won't have a reference to another table, since we want to test the Currencies independently.
-- [ ] In order to make sure our tests, which use the server, properly interact with the testCurrency in the respective server endpoints, you need to, depending on the NODE_ENV set (as we saw during lecture) import the Currency or testCurrency model within your routers. This is also a good time to setup some basic scripts that will either set NODE_ENV to development or test when starting the server. In order to test this, you can start the server in either test or development mode, and send **.rest** requests to it using the **REST Client**, and see if you're getting the respective table (Currency or testCurrency) entries. You may need to remove error-checking for the request body's content in order to get the POST to work (because we aren't sending countryId anymore in our tests)
-- [ ] Now, install **jest** by typing **'npm install jest'** in your **server** directory, and also install **supertest**, by typing **'npm install supertest'**. Now, add the following command to the **package.json** within the **scripts** within the **"test" command,** _cross-env NODE_ENV=test_ _jest --verbose -runInBand_. You'll notice now when you type **npm run test**, the tests run. Most will properly fail, or not run at this point. You'll need to go through the **currency_api.test.js** file, as well as the **test_helper.js** file and add the correct paths to the specified imports.
-- [ ] Because we are clearing the testCurrency table before each test, it doesn't matter what is in the table, it only matters that the table exists, and it should exist at this point if your **initData.js** was run and is working correctly.
-- [ ] The **GET** tests should be passing if everything is working correctly. Please implement the **POST, PUT,** and **DELETE** tests, respectively. You only need to make a single test in each case. Make use of the helper functions we have provided where appropriate. **Note: there's a slight typo in the test, where it says 'adding a currency' in the POST, PUT, and DELETE tests. It should say, 'adding a currency', 'updating a currency', and 'deleting a currency', respectively.**
+- [x] Within the zip file you downloaded in **Part 1**, there is also a **part3** folder.
+- [x] Within your **server** directory in your project, create a **tests** directory, and copy the contents of **part3** there.
+- [x] One thing you need to change before you do anything else is to modify your **server.js** file to, instead of only listening to the express-app, to assign the app.listen(...) to some variable, and then export it. _If confusing, please see the supertest example we went over for a reference of how to do this._
+- [x] Now, within your **server** directory, install the following package (cross-env) by typing this command, _npm install cross-env --save-dev_
+- [x] Now, create a testCurrency model, it will be almost exactly the same as the Currency model, but we neither want a **countryId** attribute anymore, nor a reference to the **Country** table, also the modelName attribute is 'testCurrency' instead of 'Currency'. We are doing this to make the tests a bit simpler, as we won't have a reference to another table, since we want to test the Currencies independently.
+- [x] In order to make sure our tests, which use the server, properly interact with the testCurrency in the respective server endpoints, you need to, depending on the NODE_ENV set (as we saw during lecture) import the Currency or testCurrency model within your routers. This is also a good time to setup some basic scripts that will either set NODE_ENV to development or test when starting the server. In order to test this, you can start the server in either test or development mode, and send **.rest** requests to it using the **REST Client**, and see if you're getting the respective table (Currency or testCurrency) entries. You may need to remove error-checking for the request body's content in order to get the POST to work (because we aren't sending countryId anymore in our tests)
+- [x] Now, install **jest** by typing **'npm install jest'** in your **server** directory, and also install **supertest**, by typing **'npm install supertest'**. Now, add the following command to the **package.json** within the **scripts** within the **"test" command,** _cross-env NODE_ENV=test_ _jest --verbose -runInBand_. You'll notice now when you type **npm run test**, the tests run. Most will properly fail, or not run at this point. You'll need to go through the **currency_api.test.js** file, as well as the **test_helper.js** file and add the correct paths to the specified imports.
+- [x] Because we are clearing the testCurrency table before each test, it doesn't matter what is in the table, it only matters that the table exists, and it should exist at this point if your **initData.js** was run and is working correctly.
+- [x] The **GET** tests should be passing if everything is working correctly. Please implement the **POST, PUT,** and **DELETE** tests, respectively. You only need to make a single test in each case. Make use of the helper functions we have provided where appropriate. **Note: there's a slight typo in the test, where it says 'adding a currency' in the POST, PUT, and DELETE tests. It should say, 'adding a currency', 'updating a currency', and 'deleting a currency', respectively.**
+
+</details>
+
+<details>
+    <summary><h4>Assignment 5</h4></summary>
+
+Please merge your latest (accumulated) code from assignment 4 into main before starting.
+
+- [x] After merging all your code from previous assignments into "main", make sure that your branch contains only two folders in the root: client (for the front-end React UI) and server (for the node-express server).
+- [x] Create a new branch and call it "production". Create the branch based on the latest code from "main".
+click on the Actions tab in the repository page. Then click on "set up a workflow yourself ".
+- [x] Create a deployment pipeline workflow that is triggered on each merge to the production branch (on push). The pipeline should have one job with multiple steps each run on a different directory. Check the diagram below for the details. (test your pipeline and make sure that all steps are succeeding on a demo merge before proceeding)
+- [x] Go to render.comLinks to an external site. and create a new Web Service, then connect the service to your repository. Set the "Root Directory"  to ./server , and the "Start Command" to  npm start. (make sure that npm start is configured in package.json for your server to start). Add the "Environment Variables" of the Postgres database from the .env file of the server to the Web Service. Finally create the service with "Create Web Service" button. Wait for the build to finish and make sure that the deployment succeeded with no errors. 
+- [x] Create a new Staic Site on Render and connect it to your repositoy. Set the "Root Directory"  to ./client, the "Build Command" to npm install; npm run build, and the "Publish directory" to ./dist. Click on "Create Static Site" button.
+- [x] After the first build finishes, go to "Redirects/Rewrites", and add a new rule to rewrite all endpoints and make them towards the server link (the Web Service live link). The rule should be similar to this one: Soruce: </api/*>, Destiantion: <live link to server/api/*>, Action: Rewrite. 
+- [x] Check the live links from the two instances. The front-end should show the UI and the back-end should be connected to the (GET /) of the server. If the deployment succeeded and the app is live, go to settings, then set "Auto-Deploy" to No on both instances, and Copy the "Deploy Hook" from each instance. 
+- [x] Go to the repository page on Github and click on Settings -> Secrets and variables -> Actions. Create two "New repository secret":  "SERVER_DEPLOYMENT_HOOK" and "CLIENT_DEPLOYMENT_HOOK" and paste the copied hooks from the previous step to each secret. 
+- [x] Go the YAML file of the workflow and add two new final steps that call the deployment hook: run: curl ${{ secrets.SERVER_DEPLOYMENT_HOOK }}  and run: curl ${{ secrets.CLIENT_DEPLOYMENT_HOOK }}
+- [x] Make a demo merge to the production branch and check the workflow. All steps should succeed and a deployment should be triggered on Render on both instances.
+Untitled.jpg
 
 </details>
