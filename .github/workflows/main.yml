@@ -23,4 +23,13 @@ jobs:
         run: npm run test
         working-directory: server
 
+      - name: Install client dependencies
+        run: npm install
+        working-directory: client
+
+      - name: Run frontend tests
+        run: npm run test
+        working-directory: client
+    
+
       
