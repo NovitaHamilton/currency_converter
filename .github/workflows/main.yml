@@ -8,7 +8,10 @@ on:
 jobs:
   deployment_job:
     runs-on: ubuntu-latest
-    steps:
+    steps:   
+    # To retrieve the secret
+      - name: Use the secret
+        run: echo ${{ secrets.DB_URL }}
       - name: Checkout code
         uses: actions/checkout@v4
   
@@ -30,6 +33,6 @@ jobs:
       - name: Run frontend tests
         run: npm run test
         working-directory: client
-    
+
 
       
