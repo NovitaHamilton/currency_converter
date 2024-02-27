@@ -9,9 +9,6 @@ jobs:
   deployment_job:
     runs-on: ubuntu-latest
     steps:   
-    # To retrieve the secret
-      - name: Use the secret
-        run: echo ${{ secrets.DB_URL }}
       - name: Checkout code
         uses: actions/checkout@v4
   
@@ -23,7 +20,7 @@ jobs:
         working-directory: server
   
       - name: Run backend tests
-        run: npm run test
+        run: DB_URL=${{ secrets.DB_URL }} npm run test
         working-directory: server
 
       - name: Install client dependencies
