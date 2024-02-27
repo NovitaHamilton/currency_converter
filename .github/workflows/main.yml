@@ -3,7 +3,7 @@ name: deployment_pipeline
 on:
   push:
     branches:
-      - main
+      - production
 
 jobs:
   deployment_job:
