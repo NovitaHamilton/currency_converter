@@ -31,5 +31,11 @@ jobs:
         run: npm run test
         working-directory: client
 
+      - name: Run server deploy hook
+        run: curl ${{ secrets.SERVER_DEPLOYMENT_HOOK }}
 
+      - name: Run client deploy hook
+        run: curl ${{ secrets.CLIENT_DEPLOYMENT_HOOK }}
+        
+      
       
