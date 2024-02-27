@@ -8,7 +8,7 @@ We will be building a full-stack currency converter app. This assignment will be
 - [x] **Assignment 2** - Creating an SQL database using **PostgreSQL** on **Render** to create a database that holds our data and **pgAdmin** to view the content of our database, which connects to the node-express server.
 - [x] **Assignment 3** -Creating a front-end React UI that allows users to use the app (without REST/POSTMAN client)
 - [x] **Assignment 4** - Adding testing to the full-stack currency converter app 
-- [ ] **Assignment 5** - Deploying the app with a live-link, with a CI/CD pipeline  **<--- WE ARE HERE**
+- [x] **Assignment 5** - Deploying the app with a live-link, with a CI/CD pipeline  **COMPLETED**
 
 
 ## Instructions per Assignment
