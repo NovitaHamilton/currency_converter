@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:3001/api/currencies';
+const baseUrl = 'https://currency-converter-1u4o.onrender.com/api/currencies';
 
 const getCurrencies = async () => {
   try {
