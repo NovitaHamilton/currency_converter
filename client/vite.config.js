@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://currency-converter-1.onrender.com', // Adjust this based on your server configuration
+        target: 'https://currency-converter-1u4o.onrender.com', // Adjust this based on your server configuration
         changeOrigin: true,
       },
     },
